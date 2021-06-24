@@ -4,8 +4,12 @@ module.exports = async function (context, req) {
     var response;
     if (password=="letmein") {
         response="Access granted."
+
+
     } else {
         response="Access denied."
+
+
     }
     context.res = {
         // status: 200, /* Defaults to 200 */
