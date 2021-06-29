@@ -14,9 +14,7 @@ module.exports = async function (context, req) {
     let objects = Object.values(emotions);
     const main_emotion = Object.keys(emotions).find(key => emotions[key] === Math.max(...objects));
     context.res = {
-        body: {
-            main_emotion
-        }
+        body: main_emotion
     };
     console.log(result)
     context.done(); 
@@ -25,7 +23,6 @@ module.exports = async function (context, req) {
 async function analyzeImage(img){
     const subscriptionKey = process.env.SUBSCRIPTIONKEY1;
     const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
-
     let params = new URLSearchParams({
         'returnFaceId': 'true',
         'returnFaceAttributes': 'emotion'
