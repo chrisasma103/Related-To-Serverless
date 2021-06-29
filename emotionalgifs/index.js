@@ -1,4 +1,5 @@
 var multipart = require('parse-multipart');
+const fetch = require('node-fetch')
 
 module.exports = async function (context, req) {
     var boundary = multipart.getBoundary(req.headers['content-type']);
@@ -8,9 +9,32 @@ module.exports = async function (context, req) {
     var parts = multipart.Parse(body, boundary);
 
     var imageData = parts[0].data
-    var convertedResult = Buffer.from(imageData).toString('base64');
+    var result = await analyzeImage(imageData);
     context.res = {
-        // status: 200, /* Defaults to 200 */
-        body: convertedResult
+        body: {
+            result
+        }
     };
+    console.log(result)
+    context.done(); 
+}
+
+async function analyzeImage(img){
+    const subscriptionKey = process.env.SUBSCRIPTIONKEY1;
+    const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
+
+    let params = new URLSearchParams({
+        'returnFaceId': 'true',
+        'returnFaceAttributes': 'emotion'
+    })
+    let resp = await fetch(uriBase + '?' + params.toString(), {
+        method: 'POST',
+        body: img,
+        headers: {
+            'Content-Type': 'application/octet-stream',
+            'Ocp-Apim-Subscription-Key': subscriptionKey
+        }
+    })
+    let emotionData = await resp.json()
+    return emotionData;
 }
