@@ -16,13 +16,14 @@ module.exports = async function (context, req) {
     context.res = {
         body: main_emotion
     };
-    console.log(result)
+    console.log(main_emotion)
     context.done(); 
 }
 
 async function analyzeImage(img){
     const subscriptionKey = process.env.SUBSCRIPTIONKEY1;
     const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
+
     let params = new URLSearchParams({
         'returnFaceId': 'true',
         'returnFaceAttributes': 'emotion'
