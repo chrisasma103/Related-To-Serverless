@@ -38,7 +38,7 @@ async function analyzeImage(img){
     return emotionData;
 }
 
-async function genDetermine(number){
+async function genDetermine(age){
     if (age >= 5 && age <= 25) {
         id = "GenZ"
     }
