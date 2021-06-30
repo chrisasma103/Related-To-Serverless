@@ -39,6 +39,7 @@ async function analyzeImage(img){
 }
 
 async function genDetermine(age){
+    let id;
     if (age >= 5 && age <= 25) {
         id = "GenZ"
     }
