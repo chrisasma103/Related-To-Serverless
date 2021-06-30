@@ -6,6 +6,6 @@ module.exports = async function (context, req) {
     let retrograde = await resp.json()
     context.res = {
         // status: 200, /* Defaults to 200 */
-        body: retrograde
+        body: retrograde.is_retrograde
     };
 }
