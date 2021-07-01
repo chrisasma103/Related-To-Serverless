@@ -8,7 +8,6 @@ module.exports = async function (context, req) {
         method: 'GET',
     })
 
-    // receive the response
     let data = await resp.arrayBuffer()
     var result = await analyzeImage(imageData);
     let age = result[0].faceAttributes.age
@@ -38,7 +37,7 @@ async function analyzeImage(img){
     return emotionData;
 }
 
-async function genDetermine(age){
+function genDetermine(age){
     let id;
     if (age >= 5 && age <= 25) {
         id = "GenZ"
