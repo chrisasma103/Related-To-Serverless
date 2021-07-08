@@ -8,13 +8,12 @@ module.exports = async function (context, req) {
     let pngresp = await fetch(downloadpng, {
         method: 'GET',
      })
-     let pngdata = await pngresp;
+    let pngdata = await pngresp;
      
-     let jpgresp = await fetch(downloadjpg, {
+    let jpgresp = await fetch(downloadjpg, {
         method: 'GET',
      })
      let jpgdata = await jpgresp;
-     context.log()
      if (pngdata.statusText == "The specified blob does not exist." && jpgdata.statusText == "The specified blob does not exist." ) {
         success = false;
         context.log("Does not exist: " + pngdata)
