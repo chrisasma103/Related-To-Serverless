@@ -4,7 +4,8 @@ module.exports = async function (context, req) {
     context.log(username)
     var download = ""
     var downloadpng = "https://bunnimagestorageacc.blob.core.windows.net/bunnimagecontainer/" + username + ".png";
-    var downloadjpg = "https://bunnimagestorageacc.blob.core.windows.net/bunnimagecontainer/" + username + ".jpeg";
+    var downloadjpeg = "https://bunnimagestorageacc.blob.core.windows.net/bunnimagecontainer/" + username + ".jpeg";
+    var downloadjpg = "https://bunnimagestorageacc.blob.core.windows.net/bunnimagecontainer/" + username + ".jpg";
     let pngresp = await fetch(downloadpng, {
         method: 'GET',
      })
@@ -12,12 +13,17 @@ module.exports = async function (context, req) {
      
     let jpgresp = await fetch(downloadjpg, {
         method: 'GET',
+    })
+    let jpgdata = await jpgresp;
+    let jpegresp = await fetch(downloadjpeg, {
+        method: 'GET',
      })
-     let jpgdata = await jpgresp;
-     if (pngdata.statusText == "The specified blob does not exist." && jpgdata.statusText == "The specified blob does not exist." ) {
+     let jpegdata = await jpegresp;
+     if (pngdata.statusText == "The specified blob does not exist." && jpgdata.statusText == "The specified blob does not exist." && jpegdata.statusText == "The specified blob does not exist.") {
         success = false;
         context.log("Does not exist: " + pngdata)
         context.log("Does not exist: " + jpgdata)
+        context.log("Does not exist: " + jpegdata)
      } else if (pngdata.statusText != "The specified blob does not exist.") {
         success = true;
         download = downloadpng
@@ -26,6 +32,10 @@ module.exports = async function (context, req) {
         success = true;
         download = downloadjpg
         context.log("Does exist: " + jpgdata)
+    } else if (jpegdata.statusText != "The specified blob does not exist.") {
+        success = true;
+        download = downloadjpeg
+        context.log("Does exist: " + jpegdata)
      }
      context.res = {
         body: {
