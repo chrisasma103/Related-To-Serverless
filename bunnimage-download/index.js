@@ -3,8 +3,8 @@ const fetch = require('node-fetch');
 module.exports = async function (context, req) {
     var username = req.headers['username'];
     var download = ""
-    var downloadpng = "https://bunnimagestorageacc.blob.core.windows.net/images/" + username + ".png";
-    var downloadjpg = "https://bunnimagestorageacc.blob.core.windows.net/images/" + username + ".jpeg";
+    var downloadpng = "https://bunnimagestorageacc.blob.core.windows.net/bunnimagecontainer/" + username + ".png";
+    var downloadjpeg = "https://bunnimagestorageacc.blob.core.windows.net/bunnimagecontainer/" + username + ".jpeg";
     let pngresp = await fetch(downloadpng, {
         method: 'GET',
      })
