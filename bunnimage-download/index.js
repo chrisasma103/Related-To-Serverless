@@ -1,10 +1,10 @@
 const fetch = require('node-fetch');
-
 module.exports = async function (context, req) {
     var username = req.headers['username'];
+    context.log(username)
     var download = ""
     var downloadpng = "https://bunnimagestorageacc.blob.core.windows.net/bunnimagecontainer/" + username + ".png";
-    var downloadjpeg = "https://bunnimagestorageacc.blob.core.windows.net/bunnimagecontainer/" + username + ".jpeg";
+    var downloadjpg = "https://bunnimagestorageacc.blob.core.windows.net/bunnimagecontainer/" + username + ".jpeg";
     let pngresp = await fetch(downloadpng, {
         method: 'GET',
      })
@@ -14,7 +14,7 @@ module.exports = async function (context, req) {
         method: 'GET',
      })
      let jpgdata = await jpgresp;
-
+     context.log()
      if (pngdata.statusText == "The specified blob does not exist." && jpgdata.statusText == "The specified blob does not exist." ) {
         success = false;
         context.log("Does not exist: " + pngdata)
