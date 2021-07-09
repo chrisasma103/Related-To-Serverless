@@ -14,7 +14,9 @@ module.exports = async function (context, req) {
     let document = {"message" : message}
     let items = await createDocument(document)
     var random_value = Math.floor(items.length * Math.random());
-    const responseMessage = `Thanks 😊! Stored your secret "${message}". 😯 Someone confessed that: ${JSON.stringify(random_value[0].message)}`;
+    context.log(message)
+    context.log(JSON.stringify(items[random_value].message))
+    const responseMessage = `Thanks 😊! Stored your secret "${message}". 😯 Someone confessed that: ${JSON.stringify(items[random_value].message)}`;
 }
 
 async function create(client) {     
@@ -43,7 +45,5 @@ async function createDocument(newItem) {
     };
     const {resources: items} = await container.items.query(querySpec).fetchAll();
     const {resource: createdItem} = await container.items.create(newItem);
-    
-
     return items;
 }
