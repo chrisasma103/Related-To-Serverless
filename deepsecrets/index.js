@@ -17,6 +17,9 @@ module.exports = async function (context, req) {
     context.log(message)
     context.log(JSON.stringify(items[random_value].message))
     const responseMessage = `Thanks 😊! Stored your secret "${message}". 😯 Someone confessed that: ${JSON.stringify(items[random_value].message)}`;
+    context.res = {
+        body: responseMessage
+    };
 }
 
 async function create(client) {     
