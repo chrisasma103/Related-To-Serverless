@@ -1,6 +1,4 @@
 var multipart = require("parse-multipart")
-const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
-const { BlobServiceClient } = require("@azure/storage-blob");
 
 module.exports = async function (context, req) {
     var responseMessage = ""
