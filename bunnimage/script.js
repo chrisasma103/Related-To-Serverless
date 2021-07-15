@@ -7,7 +7,8 @@ async function getImage(event){
 
     var bunniForm = document.getElementById("myform");
     var payload = new FormData(bunniForm);
-    payload.append(namevalue, document.getElementById("image"));
+    const file = fileInput.files[0];
+     payload.append(namevalue, file);
 
     var myHeaders = new Headers();
     myHeaders.append("content-type", "file")
