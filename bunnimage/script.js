@@ -21,5 +21,5 @@ async function getImage(event){
     } catch (e){
         alert("An error occurred.")
     }
-    $('#output').text("Uploaded successfully!")
+    $('#output').text("Your image has been stored successfully!")
 }
