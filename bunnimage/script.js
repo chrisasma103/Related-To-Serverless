@@ -1,4 +1,4 @@
-function getImage(event){
+async function getImage(event){
     event.preventDefault()
     var namevalue=document.getElementById("name").value;
     if (namevalue = ''){
