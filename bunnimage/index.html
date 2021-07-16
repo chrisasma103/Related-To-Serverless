@@ -3,21 +3,32 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>The best form</title>
+    <title>repl.it</title>
   </head>
   <body>
-      <div>
-          <h1 id="h1">Give your code some love ❤️</h1>
-          <form id="myform" onsubmit="getImage(event)" enctype="multipart/form-data">
-            <input type="file" class= "label" accept="image/x-png,image/jpeg" id="image"></input>
-            <input id="username" type="text"  placeholder="Enter your file's name">
-            <input value="Submit" type="submit"></input>
-          </form>
-            <div id="output"></div>
-      </div>
-    </body>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-     
-    <script src="./script.js" type="text/javascript"></script>
+    <script src="./script.js"></script>
+  </body>
+  <body>
+      <div class="container h-mt-5">
+          <div class="c-well">
+              <h1 id="h1">Bunnimage 🐇</h1>
+                  <h2> Upload </h2>
+                  <form id="myform" onsubmit="getImage(event)" enctype="multipart/form-data">
+                    <input class="label" type="file"  accept="image/x-png,image/jpeg" name="image"></input>
+                    <input id="username" type="text" class="c-form-input" placeholder="Enter your file's name">
+                    <br></br>
+                    <input id="button1" class="c-btn c-btn--primary" type="submit" value="Submit Your Picture 📷"></input>
+                </form>
+              <br/>
+              <div id="output" class="h-mb-4"></div>
+              <h2> Download </h2>
+              <input id="downloadusername" type="text" class="c-form-input" placeholder="Enter your file's name">
+              <br></br>
+              <input id="button2" class="c-btn c-btn--primary" type="submit" value="Download Your Picture 📷" onclick="downloadImage()"></input>
+              <img id="coffee" src="giphy.gif" />
+          </div>
+        </div>
+        <p style="text-align: center;">Bitprj © 2021</p>
+    </body>  
+</html>
