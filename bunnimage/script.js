@@ -1,4 +1,4 @@
-async function getImage(event) {
+function getImage(event) {
     event.preventDefault()
     var myform = document.getElementById("myform")
     var payload = new FormData(myform);
@@ -15,10 +15,7 @@ async function getImage(event) {
             },
             body: payload
         });
-  
-        var data = await resp.json();
-        console.log(data);
-        $('#output').text("Your image has been stored successfully!")
+        $('#output').text("Your image has been stored!")
     } else {
         alert("No name error.")
     }
