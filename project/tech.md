@@ -2,28 +2,27 @@
 
 ### Azure Services
 
-**Name of Service**
-- [replace with bullet list of what purpose(s) it serves for my project]
-- [include how it will interact with other components of your project listed above/below]
+**CosmosDB**
+- Stores the chatlog of each chatroom
+
+**Blob Storage**
+- Hosts the website once it's completed.
 
 ### APIs
 
-**Name of API**
-- [replace with bullet list of what purpose(s) it serves for my project]
-- [include how it will interact with other components of your project listed above/below]
+**N/A (So Far)**
 
 ### Packages/Libraries/Databases
 
-**Name of Packages/Library/Database**
-- [replace with bullet list of what purpose(s) it serves for my project]
-- [include how it will interact with other components of your project listed above/below]
+**Socket.io**
+- Handles real-time aspect of the app. Collects messages from clients to the server, the emits those messages to all clients.
 
 ### Front-end Languages
 
-**Name of Language**
-- [replace with bullet list of what purpose(s) it serves for my project]
-- [include how it will interact with other components of your project listed above/below]
+**Vue.js**
+- Frontend for my webapp.
+- Serves to make everything pretty. 
 
 ### Flowchart
+https://imgur.com/FNh4N0K
 
-[Replace with image of final flowchart]
